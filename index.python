@@ -1,1 +1,19 @@
-first_step-v3.0
+m = int(input("请输入有几个人围圈："))
+n = int(input("死亡序列(n)="))
+former = [] # 创个空列表
+count = 0 #用来计数
+for i in range(1,m+1): #把元素1~n顺序放入列表，再提一次，左闭右开所以是n+1
+    former.append(i)
+while True: 
+    if len(former) == 1: # 如果列表的长度为1,结束收工
+        break
+    else: 
+        count += 1 # 记数加1
+        later = former[0] #取出列表当中的第一个元素，并赋值给later
+        former.pop(0) #移除列表当中的第一个元素
+        if count == n: # 整除3的话续列没你份，赶紧滚蛋
+            count = 0 
+            continue 
+        else: 
+            former.append(later) #把不整除n的续入列表former后面
+print("最后剩下的是第",former,"位") # 最后打印出剩余的那个仔
